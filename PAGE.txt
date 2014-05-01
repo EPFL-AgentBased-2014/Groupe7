@@ -1,0 +1,60 @@
+#Introduction
+Nous nous intéressons à la sélection de terrain cultivable en fonction de leur inclinaison (pour la culture de la vigne par exemple) et à irriguer ceux-ci 
+ 
+#Objectifs
+Le but de notre modèle et d'aider à sélectionner des parcelles en fonction de leur pentes et d'indiquer les meilleurs emplacements pour y placer des sources destinées à l'irrigation par ruissellement. Nous cherchons à évaluer la pertinence de cette méthode de culture en comparant le nombre de terrains dont la pente correspond le mieux, avec le sous ensemble de terrains (sélectionnés parmi ceux-ci) aptes à être irrigué par ruissellement. 
+
+#Méthodes et procédures
+
+##Eléments
+*fixes: élévation (hauteurs des patchs)
+*mobiles: eau 
+*relations spatiales: différence d'élévations entre les patchs
+
+##Attributs
+
+###patchs
+
+*élévation
+*MaxE: élévation du point maximum d'un patch voisin 
+*MinE: élévation du point minimum d'un patch voisin  
+
+* PosMax: position du patch MaxE
+* PosMin: position du patch MinE
+
+* Irrigated? : est-il traversé par de l'eau?
+* optimal? : est-il vert et traversé par de l'eau
+* similar nearby 
+
+###Turtles
+
+* xstart
+* ystart
+* facex
+* facey
+* bottom?: : la turtle peut-elle descendre plus bas? si non, alors stop
+* greencount : compte le nombre de patchs verts traversés
+* yellowcount : compte le nombre de patchs jaunes traversés
+* selevation? 
+* elevationT
+
+##Règles de transition 
+
+* slope : sélectionne les patchs selon les critères de pente et d'altitude
+* Rainfall (step2) : crée des agents d'eau
+* downhill : L'eau s'écoule selon la plus grande pente 
+
+...
+
+## Paramètres globaux
+
+* Pente minimum
+* Pente maximum
+* Nombres de sources
+
+
+
+#Résultats
+
+#Discussion
+La première limite de notre modèle et que nous utilisons une topographie aléatoire, or nos résultats dépendent bien entendu de celle-ci. Dans certaines configurations notre méthode d'irrigation est pertinente, dans d'autres, non. Un développement évident serait de créer un programme capable d'exporter des topographies réelles en degrés de gris afin qu'elles puissent être lues par notre modèle.
